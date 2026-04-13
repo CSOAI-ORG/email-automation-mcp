@@ -1,0 +1,10 @@
+name: email-automation-mcp
+description: "MEOK AI Labs — Send and read emails via standard SMTP/IMAP protocols. Works with any email"
+vendor: MEOK AI Labs
+homepage: https://meok.ai
+repository: https://github.com/CSOAI-ORG/email-automation-mcp
+license: MIT
+categories: [Marketing, Email]
+tags: [email-automation, email-marketing, email-campaigns, smtp, newsletter]
+runtime: python
+entrypoint: server.py
