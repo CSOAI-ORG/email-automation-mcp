@@ -20,6 +20,11 @@ Environment variables (set before running):
     IMAP_PORT       - IMAP port (default: 993)
 """
 
+
+import sys, os
+sys.path.insert(0, os.path.expanduser('~/clawd/meok-labs-engine/shared'))
+from auth_middleware import check_access
+
 import email
 import email.utils
 import imaplib
@@ -396,7 +401,7 @@ mcp = FastMCP(
 
 
 @mcp.tool()
-def send_email(to: str, subject: str, body: str, html: bool = False, cc: str = "", bcc: str = "", confirm: bool = True) -> dict:
+def send_email(to: str, subject: str, body: str, html: bool = False, cc: str = "", bcc: str = "", confirm: bool = True, api_key: str = "") -> dict:
     """Send an email via SMTP. Requires EMAIL_ADDRESS and EMAIL_PASSWORD env vars.
 
     Safety: Set confirm=False to actually send. When confirm=True (default),
@@ -411,6 +416,10 @@ def send_email(to: str, subject: str, body: str, html: bool = False, cc: str = "
         bcc: BCC recipients (comma-separated)
         confirm: If True, preview only (does not send). Set False to send.
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     err = _check_rate_limit()
     if err:
         return {"error": err}
@@ -437,7 +446,7 @@ def send_email(to: str, subject: str, body: str, html: bool = False, cc: str = "
 
 
 @mcp.tool()
-def read_inbox(folder: str = "INBOX", limit: int = 10) -> dict:
+def read_inbox(folder: str = "INBOX", limit: int = 10, api_key: str = "") -> dict:
     """Read recent emails from a mailbox folder. Returns subject, from, date,
     and body preview for each message.
 
@@ -445,6 +454,10 @@ def read_inbox(folder: str = "INBOX", limit: int = 10) -> dict:
         folder: IMAP folder name (default: INBOX)
         limit: Max emails to return (default: 10, max: 25)
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     err = _check_rate_limit()
     if err:
         return {"error": err}
@@ -455,7 +468,7 @@ def read_inbox(folder: str = "INBOX", limit: int = 10) -> dict:
 
 
 @mcp.tool()
-def search_emails(query: str, folder: str = "INBOX", limit: int = 10) -> dict:
+def search_emails(query: str, folder: str = "INBOX", limit: int = 10, api_key: str = "") -> dict:
     """Search emails in a folder. Supports these query formats:
     - Email address: searches FROM field
     - 'subject:keyword': searches subject
@@ -470,6 +483,10 @@ def search_emails(query: str, folder: str = "INBOX", limit: int = 10) -> dict:
         folder: IMAP folder to search (default: INBOX)
         limit: Max results (default: 10, max: 25)
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     err = _check_rate_limit()
     if err:
         return {"error": err}
@@ -480,7 +497,7 @@ def search_emails(query: str, folder: str = "INBOX", limit: int = 10) -> dict:
 
 
 @mcp.tool()
-def create_draft(to: str, subject: str, body: str) -> dict:
+def create_draft(to: str, subject: str, body: str, api_key: str = "") -> dict:
     """Save an email as a draft without sending it. The draft appears in
     your Drafts folder and can be sent later from your email client.
 
@@ -489,6 +506,10 @@ def create_draft(to: str, subject: str, body: str) -> dict:
         subject: Email subject
         body: Email body text
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     err = _check_rate_limit()
     if err:
         return {"error": err}
@@ -499,10 +520,14 @@ def create_draft(to: str, subject: str, body: str) -> dict:
 
 
 @mcp.tool()
-def list_folders() -> dict:
+def list_folders(api_key: str = "") -> dict:
     """List all mailbox folders (INBOX, Sent, Drafts, etc.) available
     on the IMAP server. Useful for discovering folder names before
     reading or searching."""
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     err = _check_rate_limit()
     if err:
         return {"error": err}

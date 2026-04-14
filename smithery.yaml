@@ -1,10 +1,66 @@
 name: email-automation-mcp
-description: "MEOK AI Labs — Send and read emails via standard SMTP/IMAP protocols. Works with any email"
-vendor: MEOK AI Labs
-homepage: https://meok.ai
-repository: https://github.com/CSOAI-ORG/email-automation-mcp
-license: MIT
-categories: [Marketing, Email]
-tags: [email-automation, email-marketing, email-campaigns, smtp, newsletter]
-runtime: python
-entrypoint: server.py
+description: "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Sovereign AI tools for\
+  \ everyone."
+version: 1.0.0
+tools:
+- name: send_email
+  description: Send an email via SMTP. Requires EMAIL_ADDRESS and EMAIL_PASSWORD env
+    vars.
+  parameters:
+  - name: to
+    type: string
+    required: true
+  - name: subject
+    type: string
+    required: true
+  - name: body
+    type: string
+    required: true
+  - name: html
+    type: boolean
+    required: false
+  - name: cc
+    type: string
+    required: false
+  - name: bcc
+    type: string
+    required: false
+  - name: confirm
+    type: boolean
+    required: false
+- name: read_inbox
+  description: Read recent emails from a mailbox folder. Returns subject, from, date,
+  parameters:
+  - name: folder
+    type: string
+    required: false
+  - name: limit
+    type: integer
+    required: false
+- name: search_emails
+  description: 'Search emails in a folder. Supports these query formats:'
+  parameters:
+  - name: query
+    type: string
+    required: true
+  - name: folder
+    type: string
+    required: false
+  - name: limit
+    type: integer
+    required: false
+- name: create_draft
+  description: Save an email as a draft without sending it. The draft appears in
+  parameters:
+  - name: to
+    type: string
+    required: true
+  - name: subject
+    type: string
+    required: true
+  - name: body
+    type: string
+    required: true
+- name: list_folders
+  description: List all mailbox folders (INBOX, Sent, Drafts, etc.) available
+  parameters: []
