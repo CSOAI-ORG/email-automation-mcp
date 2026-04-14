@@ -392,8 +392,7 @@ def _list_folders() -> dict:
 # ---------------------------------------------------------------------------
 mcp = FastMCP(
     "Email Automation MCP",
-    instructions="Email toolkit via SMTP/IMAP: send emails, read inbox, search, create drafts, and list folders. Works with Gmail, Outlook, Yahoo, Fastmail, and any standard provider. By MEOK AI Labs.",
-)
+    instructions="Email toolkit via SMTP/IMAP: send emails, read inbox, search, create drafts, and list folders. Works with Gmail, Outlook, Yahoo, Fastmail, and any standard provider. By MEOK AI Labs.")
 
 
 @mcp.tool()
