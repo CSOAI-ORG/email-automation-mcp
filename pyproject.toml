@@ -22,3 +22,6 @@ Repository = "https://github.com/CSOAI-ORG/email-automation-mcp"
 [tool.hatch.build.targets.wheel]
 packages = ["."]
 only-include = ["server.py"]
+
+[project.scripts]
+email_automation_mcp = "server:main"

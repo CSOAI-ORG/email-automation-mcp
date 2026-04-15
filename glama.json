@@ -1,0 +1,10 @@
+{
+  "name": "email-automation-mcp",
+  "description": "MEOK AI Labs \u2014 email-automation-mcp",
+  "vendor": "MEOK AI Labs",
+  "homepage": "https://meok.ai",
+  "repository": "https://github.com/CSOAI-ORG/email-automation-mcp",
+  "license": "MIT",
+  "runtime": "python",
+  "entryPoint": "mcp-wrapper.py"
+}
