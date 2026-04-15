@@ -1,0 +1,57 @@
+{
+  "name": "Email Automation MCP",
+  "description": "Email toolkit via SMTP/IMAP: send emails, read inbox, search, create drafts, and list folders. Works with Gmail, Outlook, Yahoo, Fastmail, and any standard provider. By MEOK AI Labs.",
+  "version": "1.0.0",
+  "protocol_version": "2025-11-25",
+  "publisher": {
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "email": "nicholas@meok.ai"
+  },
+  "repository": "https://github.com/CSOAI-ORG/email-automation-mcp",
+  "license": "MIT",
+  "transport": [
+    "stdio",
+    "streamable-http"
+  ],
+  "authentication": {
+    "type": "api-key",
+    "free_tier": true,
+    "free_limit": "15 calls/day"
+  },
+  "tools": [
+    {
+      "name": "send_email",
+      "description": "Send an email via SMTP. Requires EMAIL_ADDRESS and EMAIL_PASSWORD env vars."
+    },
+    {
+      "name": "read_inbox",
+      "description": "Read recent emails from a mailbox folder. Returns subject, from, date,"
+    },
+    {
+      "name": "search_emails",
+      "description": "Search emails in a folder. Supports these query formats:"
+    },
+    {
+      "name": "create_draft",
+      "description": "Save an email as a draft without sending it. The draft appears in"
+    },
+    {
+      "name": "list_folders",
+      "description": "List all mailbox folders (INBOX, Sent, Drafts, etc.) available"
+    }
+  ],
+  "categories": [
+    "AI & Machine Learning",
+    "Marketing & SEO"
+  ],
+  "pricing": {
+    "free": {
+      "calls_per_day": 15
+    },
+    "pro": {
+      "price": "$29/month",
+      "url": "https://meok.ai/pricing"
+    }
+  }
+}
