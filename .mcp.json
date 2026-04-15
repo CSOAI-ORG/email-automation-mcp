@@ -1,6 +1,6 @@
 {
   "name": "email-automation-mcp",
-  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Email toolkit via SMTP/IMAP: send emails, read inbox, search, create drafts, and list folders. Works",
+  "description": "Email Automation MCP server. Tools: send email, read inbox, search emails. Built by MEOK AI Labs.",
   "version": "1.0.0",
   "tools": [
     {
