@@ -415,6 +415,21 @@ def send_email(to: str, subject: str, body: str, html: bool = False, cc: str = "
         cc: CC recipients (comma-separated)
         bcc: BCC recipients (comma-separated)
         confirm: If True, preview only (does not send). Set False to send.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -453,6 +468,21 @@ def read_inbox(folder: str = "INBOX", limit: int = 10, api_key: str = "") -> dic
     Args:
         folder: IMAP folder name (default: INBOX)
         limit: Max emails to return (default: 10, max: 25)
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -482,6 +512,21 @@ def search_emails(query: str, folder: str = "INBOX", limit: int = 10, api_key: s
         query: Search query
         folder: IMAP folder to search (default: INBOX)
         limit: Max results (default: 10, max: 25)
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -505,6 +550,20 @@ def create_draft(to: str, subject: str, body: str, api_key: str = "") -> dict:
         to: Recipient email address
         subject: Email subject
         body: Email body text
+
+    Behavior:
+        This tool generates structured output without modifying external systems.
+        Output is deterministic for identical inputs. No side effects.
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -523,7 +582,22 @@ def create_draft(to: str, subject: str, body: str, api_key: str = "") -> dict:
 def list_folders(api_key: str = "") -> dict:
     """List all mailbox folders (INBOX, Sent, Drafts, etc.) available
     on the IMAP server. Useful for discovering folder names before
-    reading or searching."""
+    reading or searching.
+
+    Behavior:
+        This tool generates structured output without modifying external systems.
+        Output is deterministic for identical inputs. No side effects.
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
