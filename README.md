@@ -1,3 +1,5 @@
+[![email-automation-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/email-automation-mcp/badges/card.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/email-automation-mcp)
+
 <div align="center">
 
 [![GitHub stars](https://img.shields.io/github/stars/CSOAI-ORG/email-automation-mcp)](https://github.com/CSOAI-ORG/email-automation-mcp/stargazers)
