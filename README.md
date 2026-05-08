@@ -1,45 +1,59 @@
-[![email-automation-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/email-automation-mcp/badges/score.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/email-automation-mcp)
-[![MCP Registry](https://img.shields.io/badge/MCP_Registry-Published-green)](https://registry.modelcontextprotocol.io)
-[![PyPI](https://img.shields.io/pypi/v/email-automation-mcp)](https://pypi.org/project/email-automation-mcp/)
-
-[![email-automation-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/email-automation-mcp/badges/card.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/email-automation-mcp)
-
 <div align="center">
 
-[![GitHub stars](https://img.shields.io/github/stars/CSOAI-ORG/email-automation-mcp)](https://github.com/CSOAI-ORG/email-automation-mcp/stargazers)
+# Email Automation MCP
 
-# uemailU automationU mcp
+**MCP server for email automation mcp operations**
 
-**Send and read emails via standard SMTP/IMAP protocols. Works with any email provider -- Gmail, Outlook, Yahoo, Fastmail, or self-hosted. Built-in safety: preview before sending, rate-limited outbound, no stored credentials.**
-
-[![npm version](https://img.shields.io/npm/v/@meok-ai/email-automation-mcp)](https://www.npmjs.com/package/@meok-ai/email-automation-mcp)
+[![PyPI](https://img.shields.io/pypi/v/meok-email-automation-mcp)](https://pypi.org/project/meok-email-automation-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-255+_servers-purple)](https://meok.ai)
-
-[Installation](#installation) · [Docs](https://csoai.org) · [Report Bug](https://github.com/CSOAI-ORG/email-automation-mcp/issues)
+[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-MCP_Server-purple)](https://meok.ai)
 
 </div>
 
----
+## Overview
+
+Email Automation MCP provides AI-powered tools via the Model Context Protocol (MCP).
+
+## Tools
+
+| Tool | Description |
+|------|-------------|
+| `send_email` | Send an email via SMTP. Requires EMAIL_ADDRESS and EMAIL_PASSWORD env vars. |
+| `read_inbox` | Read recent emails from a mailbox folder. Returns subject, from, date, |
+| `search_emails` | Search emails in a folder. Supports these query formats: |
+| `create_draft` | Save an email as a draft without sending it. The draft appears in |
+| `list_folders` | List all mailbox folders (INBOX, Sent, Drafts, etc.) available |
 
 ## Installation
 
 ```bash
-pip install email-automation-mcp
-# or
-npm install -g @meok-ai/email-automation-mcp
+pip install meok-email-automation-mcp
 ```
 
-## Quick Start
+## Usage with Claude Desktop
 
-See the project repository for full documentation and examples.
+Add to your Claude Desktop MCP config (`claude_desktop_config.json`):
 
-## Enterprise Support
+```json
+{
+  "mcpServers": {
+    "email-automation-mcp": {
+      "command": "python",
+      "args": ["-m", "meok_email_automation_mcp.server"]
+    }
+  }
+}
+```
 
-- 📧 nicholas@csoai.org
-- 🌐 [CSOAI.org](https://csoai.org)
+## Usage with FastMCP
+
+```python
+from mcp.server.fastmcp import FastMCP
+
+# This server exposes 5 tool(s) via MCP
+# See server.py for full implementation
+```
 
 ## License
 
-MIT © [CSOAI](https://csoai.org)
-<!-- mcp-name: io.github.CSOAI-ORG/email-automation-mcp -->
+MIT © [MEOK AI Labs](https://meok.ai)
