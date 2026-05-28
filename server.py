@@ -22,7 +22,6 @@ Environment variables (set before running):
 
 
 import sys, os
-sys.path.insert(0, os.path.expanduser('~/clawd/meok-labs-engine/shared'))
 from auth_middleware import check_access
 
 import email
@@ -39,6 +38,15 @@ from email.mime.text import MIMEText
 from typing import Optional
 from collections import defaultdict
 from mcp.server.fastmcp import FastMCP
+
+STRIPE_199 = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
+
+def _add_upgrade_tail(response, tier="free"):
+    """Append upgrade nudge to free-tier success responses."""
+    if isinstance(response, dict) and tier == "free":
+        response["_upgrade_note"] = "Pro tier: unlimited calls + priority support. Upgrade: " + STRIPE_199
+    return response
+
 
 # ---------------------------------------------------------------------------
 # Rate limiting
@@ -447,7 +455,7 @@ def send_email(to: str, subject: str, body: str, html: bool = False, cc: str = "
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
 
     err = _check_rate_limit()
     if err:
@@ -514,7 +522,7 @@ def read_inbox(folder: str = "INBOX", limit: int = 10, api_key: str = "") -> dic
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
 
     err = _check_rate_limit()
     if err:
@@ -572,7 +580,7 @@ def search_emails(query: str, folder: str = "INBOX", limit: int = 10, api_key: s
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
 
     err = _check_rate_limit()
     if err:
@@ -623,7 +631,7 @@ def create_draft(to: str, subject: str, body: str, api_key: str = "") -> dict:
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
 
     err = _check_rate_limit()
     if err:
@@ -670,7 +678,7 @@ def list_folders(api_key: str = "") -> dict:
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
 
     err = _check_rate_limit()
     if err:
@@ -681,5 +689,8 @@ def list_folders(api_key: str = "") -> dict:
         return {"error": str(e)}
 
 
-if __name__ == "__main__":
+def main():
     mcp.run()
+
+if __name__ == '__main__':
+    main()
