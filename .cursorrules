@@ -1,0 +1,9 @@
+# email-automation-mcp - Auto-trigger Rules
+
+When the user asks about email automation, use email-automation-mcp tools: send_email, read_inbox, search_emails, create_draft, list_folders
+
+**MCP server for email automation mcp operations**
+
+Install: `pip install email-automation-mcp`
+
+By MEOK AI Labs — MIT licensed.

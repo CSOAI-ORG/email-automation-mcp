@@ -1,0 +1,36 @@
+# email-automation-mcp
+# **MCP server for email automation mcp operations**
+
+## Install
+```bash
+pip install email-automation-mcp
+```
+
+## Auth & Rate Limits
+- Free tier: 10 calls/day. No API key required.
+- Pro tier (£79/mo): unlimited + signed attestations.
+- Enterprise (£1,499/mo): white-label.
+
+## Tools
+
+### `send_email`
+Send an email via SMTP. Requires EMAIL_ADDRESS and EMAIL_PASSWORD env vars.
+
+### `read_inbox`
+Read recent emails from a mailbox folder. Returns subject, from, date,
+
+### `search_emails`
+Search emails in a folder. Supports these query formats:
+
+### `create_draft`
+Save an email as a draft without sending it. The draft appears in
+
+### `list_folders`
+List all mailbox folders (INBOX, Sent, Drafts, etc.) available
+
+
+## Maintainer
+MEOK AI Labs · hello@meok.ai · https://meok.ai · MIT licensed
+
+## Pairs with
+Governance moat: pair this tool with any of MEOK's 38 governance MCPs (EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, etc.) for full compliance coverage.

@@ -1,0 +1,28 @@
+{
+  "name": "email-automation-mcp",
+  "title": "Email Automation Mcp",
+  "description": "Email Automation MCP server. Tools: send email, read inbox, search emails. Built by MEOK AI Labs.",
+  "version": "1.0.7",
+  "homepage": "https://meok.ai",
+  "license": "MIT",
+  "transport": {
+    "type": "stdio"
+  },
+  "tools": [
+    {
+      "name": "send_email"
+    },
+    {
+      "name": "read_inbox"
+    },
+    {
+      "name": "search_emails"
+    },
+    {
+      "name": "create_draft"
+    },
+    {
+      "name": "list_folders"
+    }
+  ]
+}
