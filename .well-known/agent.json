@@ -1,0 +1,68 @@
+{
+  "name": "email-automation-mcp",
+  "description": "Email Automation MCP Server by MEOK AI Labs",
+  "url": "https://proofof.ai/scorecard/email-automation-mcp.html",
+  "version": "1.0.7",
+  "protocolVersion": "0.2.0",
+  "provider": {
+    "organization": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "skills": [
+    {
+      "id": "send_email",
+      "name": "Send Email",
+      "description": "send_email via email-automation-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "read_inbox",
+      "name": "Read Inbox",
+      "description": "read_inbox via email-automation-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "search_emails",
+      "name": "Search Emails",
+      "description": "search_emails via email-automation-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "create_draft",
+      "name": "Create Draft",
+      "description": "create_draft via email-automation-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "list_folders",
+      "name": "List Folders",
+      "description": "list_folders via email-automation-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    }
+  ]
+}

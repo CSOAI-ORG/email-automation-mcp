@@ -1,0 +1,23 @@
+{
+  "acpVersion": "0.1",
+  "agent": {
+    "name": "email-automation-mcp",
+    "description": "Email Automation MCP Server by MEOK AI Labs",
+    "version": "1.0.7",
+    "provider": "MEOK AI Labs",
+    "interfaces": [
+      {
+        "type": "mcp",
+        "transport": "stdio",
+        "package": "email-automation-mcp"
+      }
+    ],
+    "capabilities": [
+      "send_email",
+      "read_inbox",
+      "search_emails",
+      "create_draft",
+      "list_folders"
+    ]
+  }
+}
