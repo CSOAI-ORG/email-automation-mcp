@@ -4,9 +4,8 @@
   "version": "1.0.10",
   "description": "Email Automation MCP Server by MEOK AI Labs",
   "repository": {
-    "type": "git",
     "url": "https://github.com/CSOAI-ORG/email-automation-mcp",
-    "source": "https://github.com/CSOAI-ORG/email-automation-mcp"
+    "source": "github"
   },
   "packages": [
     {
