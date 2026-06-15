@@ -1,4 +1,4 @@
-<!-- mcp-name: CSOAI-ORG/email-automation-mcp -->
+<!-- mcp-name: io.github.CSOAI-ORG/email-automation-mcp -->
 [![MCP Scorecard: 86/100](https://img.shields.io/badge/proofof.ai-86%2F100-5b21b6)](https://proofof.ai/scorecard/email-automation-mcp.html)
 
 # Email Automation MCP
@@ -138,3 +138,8 @@ Once configured, ask your assistant, for example:
 - "Use `send_email` to …"
 - "Use `read_inbox` to …"
 - "Use `search_emails` to …"
+
+## See also
+
+MEOK compliance MCP fleet:
+[`email-validator-ai-mcp`](https://github.com/CSOAI-ORG/email-validator-ai-mcp)
